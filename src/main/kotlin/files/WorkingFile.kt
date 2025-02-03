@@ -2,7 +2,18 @@ package ru.normno.files
 
 import java.io.File
 
-class WorkingFile {
+class WorkingFile(
+    folder: File,
+    file: File,
+) {
+    init {
+        if (!folder.exists()) {
+            folder.mkdirs()
+        }
+        file.createNewFile()
+        file.writeText("Hello, Kotlin!")
+    }
+
     fun printFilesRecursively(
         folder: File = File("."),
         indentationLevel: Int = 0,

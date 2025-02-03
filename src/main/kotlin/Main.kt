@@ -8,7 +8,7 @@ import java.io.File
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
     val folder = File("hello/test")
-    val file = File(folder, "hello.txt")
+    val file = File(folder, "numbers.txt")
 
     WorkingFile(folder, file)
 

@@ -2,6 +2,7 @@ package ru.normno.stream
 
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileOutputStream
 
 class InputOutputStreams(
     file: File,
@@ -15,10 +16,26 @@ class InputOutputStreams(
 //        inputStream.close()
 
         //Safe option for reading files
-        val bytes = FileInputStream(file).use {
-            it.readBytes()
+//        val bytes = FileInputStream(file).use {
+//            it.readBytes()
+//        }
+
+        val stringBuilder = StringBuilder()
+
+        FileInputStream(file).use {
+            var byte = it.read()
+            while (byte != -1) {
+                stringBuilder.append(byte.toChar())
+                byte = it.read()
+            }
         }
 
-        println(bytes.decodeToString())
+        println(stringBuilder.toString())
+
+        FileOutputStream(file).use { outputFile ->
+            repeat(100_000) {
+                outputFile.write("$it\n".encodeToByteArray())
+            }
+        }
     }
 }

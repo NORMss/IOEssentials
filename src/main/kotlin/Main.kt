@@ -10,7 +10,7 @@ fun main() {
     val folder = File("hello/test")
     val file = File(folder, "numbers.txt")
 
-    WorkingFile(folder, file)
+//    WorkingFile(folder, file)
 
     InputOutputStreams(file)
 }
